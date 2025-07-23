@@ -6,8 +6,10 @@ services:
     ports:
       - "3309:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: 12345
       MYSQL_DATABASE: example
+      MYSQL_ROOT_PASSWORD: 12345
+#    volumes:
+#      - ./dump:/docker-entrypoint-initdb.d
     networks:
       - app_network
   nginx:
@@ -28,13 +30,36 @@ services:
       - app_network
   php:
     image: php:8.2-fpm
+#    build:
+#      context: ./
+#      dockerfile: ./php/Dockerfile
+    tty: true
+    working_dir: /var/www/html/homes_staging
     container_name: php-hst
-    volumes:
-      - .:/var/www/html/homes_staging
     environment:
-     PHP_IDE_CONFIG: serverName=homesstaging
+      PHP_IDE_CONFIG: serverName=homesstaging.ru
+    volumes:
+      - ./:/var/www/html/homes_staging
+    depends_on:
+      - mysql
     networks:
       - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+#  php:
+#    image: php:8.2-fpm
+#    container_name: php-hst
+#    working_dir: /var/www/html/homes_staging
+#    volumes:
+#      - .:/var/www/html/homes_staging
+#    environment:
+#     PHP_IDE_CONFIG: serverName=homesstaging
+#    networks:
+#      - app_network
+
 #  app:
 #    build:
 #      context: ./
@@ -45,7 +70,3 @@ services:
 #      - ./:/app
 #    networks:
 #      - app_network
-
-networks:
-  app_network:
-    driver: bridge

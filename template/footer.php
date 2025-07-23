@@ -1,14 +1,9 @@
-<?php
-    use Utils\GetLink;
-?>
-
 <footer id="footer" class="footer position-relative dark-background">
-
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6">
           <div class="footer-about">
-            <a href="<?=GetLink::get('main-page') . 'index.html'?>" class="logo sitename">Москва</a>
+            <a href="'index.html'?>" class="logo sitename">Москва</a>
             <div class="footer-contact pt-3">
               <p>ул. Белобородова</p>
               <p>125222, Митино.</p>

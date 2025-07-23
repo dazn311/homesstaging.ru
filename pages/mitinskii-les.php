@@ -11,5 +11,5 @@ $PAGE_KEYWORDS = "homestaging москва,упаковка квартир мо�
 $DOCUMENT_ROOT = dirname($_SERVER['DOCUMENT_ROOT']);
 
 require $DOCUMENT_ROOT . "/template/header.php";
-require $DOCUMENT_ROOT . "/template/main-page.php";
+require $DOCUMENT_ROOT . "/template/mitinskii-page.php";
 require $DOCUMENT_ROOT . "/template/footer.php";

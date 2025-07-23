@@ -1,7 +1,7 @@
 <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-        <img src="static/images/hero-bg.jpg" alt="" data-aos="fade-in">
+        <img src="/static/images/hero-bg.jpg" alt="" data-aos="fade-in">
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row justify-content-start">
                 <div class="col-lg-8">
@@ -10,12 +10,10 @@
                 </div>
             </div>
         </div>
-
     </section><!-- /Hero Section -->
 
     <!-- About Section Обо мне-->
     <section id="about" class="about section">
-
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
             <span>Обо мне<br></span>
@@ -25,11 +23,9 @@
         </div><!-- End Section Title -->
 
         <div class="container">
-
             <div class="row gy-4">
-
                 <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-                    <img src="static/images/natalia.jpg?version=2" class="img-fluid" alt="Наталия">
+                    <img src="/static/images/natalia.jpg?version=2" class="img-fluid" alt="Наталия">
                 </div>
 
                 <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
@@ -145,9 +141,7 @@
 
     <!-- Обсудить сотрудничество Section -->
     <section id="call-to-action" class="call-to-action section dark-background">
-
         <img src="static/images/cta-bg.jpg" alt="">
-
         <div class="container">
             <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
                 <div class="col-xl-10">
@@ -159,7 +153,6 @@
                 </div>
             </div>
         </div>
-
     </section><!-- /Call To Action Section -->
 
     <!-- Pricing Section -->
@@ -169,7 +162,6 @@
             <span>Прайс</span>
             <h2>Прайс</h2>
         </div><!-- End Section Title -->
-
 
         <div class="container">
             <div class="row g-4 g-lg-0">
@@ -222,13 +214,8 @@
                 </div><!-- End Pricing Item -->
 
             </div>
-
-
         </div><!-- End Container -->
-
-
         </div>
-
     </section><!-- /Pricing Section -->
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -236,7 +223,6 @@
         <div class="container section-title" data-aos="fade-up">
             <span>ЗАВЕРШЕННЫЕ ПРОЕКТЫ</span>
             <h2>ЗАВЕРШЕННЫЕ ПРОЕКТЫ</h2>
-
         </div><!-- End Section Title -->
 
         <div class="container">
@@ -377,9 +363,7 @@
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-
             <div class="row gy-4">
-
                 <div class="col-lg-5">
                     <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
                          data-aos-delay="200">
@@ -415,10 +399,7 @@
                         <p><a href="mailto:natalia888@homesstaging.online">natalia888@homesstaging.online</a></p>
                     </div>
                 </div><!-- End Info Item -->
-
             </div>
         </div>
-
     </section><!-- /Contact Section -->
-
 </main>

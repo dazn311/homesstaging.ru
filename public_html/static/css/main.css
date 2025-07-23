@@ -528,6 +528,9 @@ h6 {
   }
 }
 
+.main {
+  margin-top: 80px;
+}
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
@@ -778,6 +781,7 @@ h6 {
   background-color: var(--background-color);
   padding: 20px 0;
   position: relative;
+  /*margin-top: 90px;*/
 }
 
 .page-title h1 {

@@ -1,9 +1,5 @@
-<?php
-    use Utils\GetLink;
-?>
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -12,8 +8,8 @@
     <meta name="keywords" content="homestaging москва,упаковка квартир москва,homestaging красногорск,меблировка, комплектация квартир, хоумстейджер">
 
     <!-- Favicons -->
-    <link href="<?=GetLink::get('main-page') . 'static/images/favicon.ico?ver=2'?>" rel="icon">
-    <link href="<?=GetLink::get('main-page') . 'static/images/apple-touch-icon.png?ver=2'?>" rel="apple-touch-icon">
+    <link href="/static/images/favicon.ico?ver=2" rel="icon">
+    <link href="/static/images/apple-touch-icon.png?ver=2" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -23,18 +19,18 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="<?= GetLink::get('main-page')?>static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="<?= GetLink::get('main-page')?>static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
-    <link href="<?= GetLink::get('main-page')?>static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/vendor/aos/aos.css" rel="stylesheet">
 
-    <link href="<?= GetLink::get('main-page')?>static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="/static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <link href="<?= GetLink::get('main-page')?>static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="<?= GetLink::get('main-page')?>static/css/main.css?ver=2" rel="stylesheet">
+    <link href="/static/css/main.css?ver=250724" rel="stylesheet">
 
     <!-- =======================================================
     * Template Name: Day
@@ -73,11 +69,11 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="<?= GetLink::get('main-page')?>#hero" class="active">Главная</a></li>
-                    <li><a href="<?= GetLink::get('main-page')?>#about">Обо мне</a></li>
-                    <li><a href="<?= GetLink::get('main-page')?>#cards">Услуги</a></li>
-                    <li><a href="<?= GetLink::get('main-page')?>#pricing">Цены</a></li>
-                    <li><a href="<?= GetLink::get('main-page')?>#portfolio">Портфолио</a></li>
+                    <li><a href="/#hero" class="active">Главная</a></li>
+                    <li><a href="/#about">Обо мне</a></li>
+                    <li><a href="/#cards">Услуги</a></li>
+                    <li><a href="/#pricing">Цены</a></li>
+                    <li><a href="/#portfolio">Портфолио</a></li>
                     <li class="dropdown text-secondary"><a href="#"><span class="text-secondary">Проекты</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -85,12 +81,12 @@
                             <li class="dropdown"><a href="#"><span>ЖК Митинский лес</span> <i
                                         class="bi bi-chevron-down toggle-dropdown"></i></a>
                                 <ul>
-                                    <li><a href="mitino1-details.html">Муравская улица, 38Бк1</a></li>
+                                    <li><a href="/pages/mitinskii-les">Муравская улица, 38Бк1</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="<?= GetLink::get('main-page')?>#contact">Контакты</a></li>
+                    <li><a href="#contact">Контакты</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>

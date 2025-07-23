@@ -1,7 +1,7 @@
 <?php
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../init.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../php/routers/router.php';
+$root_path = dirname($_SERVER['DOCUMENT_ROOT']);
+require_once $root_path . '/init.php';
+require_once $root_path . '/php/routers/router.php';
 
 
 

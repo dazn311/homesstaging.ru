@@ -1,11 +1,12 @@
 {
     "autoload": {
         "psr-4": {
-            "Utils\\": "lib/Utils/"
+            "Utils\\": "Lib/Utils/"
         }
     },
     "require": {
         "vlucas/phpdotenv": "^5.6",
-        "predis/predis": "^3.0"
+        "predis/predis": "^3.0",
+        "ext-pdo": "*"
     }
 }

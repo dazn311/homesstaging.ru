@@ -1,12 +1,26 @@
 daz
+
+//add auto load classes;
+composer dump-autoload
+
+//install deps;
+composer update
+
+docker-compose build
 docker-compose up -d
 docker-compose down
-docker-compose exec app php -i | grep mysql
+docker-compose exec php php -i | grep mysql
+docker exec -it  php-hst sh
+
 docker-compose exec app php /app/bin/mysql_create.php
 docker-compose exec app php /app/bin/registration.php
 docker-compose exec app php /app/bin/insert.php
 docker-compose exec app php /app/bin/select.php
 docker-compose exec app php /app/bin/mysql_connection.php
+
+docker-compose exec php php /var/www/html/homes_staging/bin/mysql_create.php
+docker-compose exec php php /var/www/html/homes_staging/bin/registration.php
+
 ========================
 https://selectel.ru/blog/docker-compose/
 ==========================
