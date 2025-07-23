@@ -1,0 +1,15 @@
+@startuml
+title EXECUTE Statement
+actor Client
+database Server
+autonumber
+
+note over Client:  SELECT * FROM users WHERE username = 'admin'
+Client->Server: Запрос SQL
+'note over Server: Выполняется запрос
+group Выполняется запрос
+note over Server: Построение плана
+note over Server: Исполнение плана
+end
+Server->Client: Результат запроса
+@enduml

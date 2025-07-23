@@ -1,0 +1,81 @@
+@startmindmap
+* PHP PDO и работа с базой данных
+** Вступление
+*** Определение(теория)
+*** Общий план по плейлисту
+*** Специализированный API или общий для всех баз PDO ?
+**** mysql_* vs mysqli_* vs PDO
+**** mysql vs mysqlnd
+**** PGSQL (pdo vs pg_*)
+**** SQLITE
+*** Для чего не подходит PDO (не поддерживает асинхронные запросы)
+*** Другие паттерны работы с БД (кратко)
+**** Query builder
+**** Table row gateway
+**** Active record
+**** Data mapper
+*** Окружение для проверки теории
+*** Создания подключения
+**** Составление DSN
+**** Опции
+***** Глобальные
+***** Относящиеся к драйверу
+*** Cпособы выполнить запрос
+**** exec
+**** query
+**** prepare
+*** CREATE TABLE
+
+** Основные операции (CRUD)
+
+*** INSERT
+**** lastInsertId
+**** Массовая вставка
+*** UPDATE
+*** DELETE
+*** SELECT
+*** exec vs query vs prepare что выбрать ?
+
+** SQL INJECTION!!!
+*** Определение(теория)
+*** Конкретный пример
+*** Исправление проблемы с prepared statment
+*** Там где prepared statment не применим
+
+** Подготовленные  запросы
+*** Prepare vs Execute
+*** Именнованные placeholder (пример)
+*** Неименованные placeholder (пример)
+*** bindParam и bindValue
+*** PDO эмулирует подготовленные запросы по умолчанию (ATTR_EMULATE_PREPARES)
+*** query использует механизм подготовленных запросов
+*** placeholder можно использовать только для значений
+
+** Извлечение данных
+*** Массивы
+**** FETCH_ASSOC
+**** FETCH_NUM
+**** FETCH_BOTH
+**** FETCH_NAMED
+*** Объект
+**** FETCH_CLASS = fetchObject
+**** FETCH_PROPS_LATE
+**** FETCH_INTO
+**** FETCH_OBJ
+*** FETCH_BOUND
+**** Большие объекты (LOB)
+*** fetchColumn
+
+** Буферизированные и небуферезированные
+*** Пример mysql
+*** Пример pgsql
+*** Сравнение "небуферизированных" и LOB
+*** Извлечение данных порциями (chunk)
+
+** Транзакции
+*** beginTransaction
+*** commit
+*** rollback
+*** ACID
+
+@endmindmap

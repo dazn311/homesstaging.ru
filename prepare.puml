@@ -1,0 +1,14 @@
+@startuml
+title PREPARE Statement
+actor Client
+database Server
+autonumber
+
+note over Client:  SELECT * FROM users WHERE username = :placeholder
+Client->Server: Запрос SQL
+note over Server: Построение плана
+Server->Client: ID плана
+Client->Server: ID  и значение всех placeholder
+note over Server: Исполнение плана
+Server->Client: Результат запроса
+@enduml
