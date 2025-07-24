@@ -1,25 +1,25 @@
 <?php
 //session_start();
 require_once "../bin/connectPDO.php";
-//require_once "../bin/sqlite_connection.php";
 require_once "../bin/api.php";
 //require "../Lib/Utils/printLine.php";
+
 $user = trim($_GET["name"] ?? '');
-$limit = trim($_GET["limit"] ?? '5');
+$limit = trim($_GET["limit"] ?? '15');
 $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-//$result = false;
+
+
 $link = new Utils\GetLink;
 echo printLine("[12user] name: $user- limit: $limit");
 //var_dump($link->linkAlias);
 //phpinfo();
 //echo get_called_class(Utils\GetLink::get('33'));
-echo Utils\GetLink::get('auth-page');
+//echo Utils\GetLink::get('auth-page');
 
-// $result = addUser($conn,"userName",'userMail');
+//get data;
+// $result = addUserPDO($conn,"userName",'userMail');
 // $result = addUserPDO($dbh,"userName2",'userMail2');
- $result = getUsers($dbh,21);
-
-//$result = getUsers($conn,21);
+ $result = getUsersPDO($dbh,$limit);
 
 //////////
 //$user2 = getUserPDO($dbh,$user,$limit);//false| user;
@@ -55,7 +55,7 @@ echo Utils\GetLink::get('auth-page');
 
 if ($result) {
     foreach ($result as $row) {
-        echo '<li>' . $row["email"] . ' (' . $row["password"] . ')' . '</li>';
+        echo '<li>' . $row["email"] . ' (' . $row["password"] . ')' . $row["createDate"] . '</li>';
     }
 }
 

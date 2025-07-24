@@ -1,14 +1,7 @@
 <?php
-  
-  function addUser($conn,string $userName, string $userMail) {
-    $query = "INSERT INTO `user` (`id`, `name`, `email`, `createDate`) VALUES (NULL, '$userName', '$userMail', NOW());";
-    $result = $conn->execute_query($query);
-    return $result;
-
-  }
 
   function addUserPDO($dbh,string $userName, string $userMail) {
-    $query = "INSERT INTO `user` (`id`, `name`, `email`, `createDate`) VALUES (NULL, ?,? , NOW());";
+    $query = "INSERT INTO `users` (`id`, `email`, `password`, `createDate`) VALUES (NULL, ?,? , NOW());";
     try {
       $stmt = $dbh->prepare($query);
       $dbh->beginTransaction();
@@ -25,15 +18,8 @@
 
   }
 
-  function getUser($conn, string $userName, $limit=5) {
-    $query = "SELECT name, email FROM users WHERE name=? LIMIT $limit";
-    $result = $conn->execute_query($query,[$userName]);
-    return $result;
-
-  }
-
   function getUserPDO($dbh, string $userName, $limit=5) {
-    $query = "SELECT name, email FROM users WHERE name=? LIMIT ?";
+    $query = "SELECT email, password FROM users WHERE email=? LIMIT ?";
     $sth = $dbh->prepare($query);
     $sth->execute([$userName,$limit]);
     $featureIssues = $sth->fetch(PDO::FETCH_ASSOC);
@@ -41,14 +27,9 @@
 
   }
 
-  function getUsers($conn, $limit) {
-    $query = "SELECT email, password FROM users LIMIT $limit";
-    $result = $conn->query($query);
-  return $result->fetchAll();
-  }
 
   function getUsersPDO($dbh, $limit) {
-    $query = "SELECT email, name FROM users LIMIT $limit";
+    $query = "SELECT email, password, createDate FROM users LIMIT $limit";
     $sth = $dbh->prepare($query);
     $sth->execute();
     $featureIssues = $sth->fetchAll();
@@ -56,3 +37,22 @@
   }
 
   //INSERT INTO `counter` (`id`, `ipAddress`, `lastTime`) VALUES (NULL, '192.168.0.22', CURRENT_TIMESTAMP), (NULL, '192.168.0.25', CURRENT_TIMESTAMP);
+
+
+//  function getUsers($conn, $limit) {
+//    $query = "SELECT email, password FROM users LIMIT $limit";
+//    $result = $conn->query($query);
+//  return $result->fetchAll();
+//  }
+
+//  function getUser($conn, string $userName, $limit=5) {
+//    $query = "SELECT name, email FROM users WHERE name=? LIMIT $limit";
+//    $result = $conn->execute_query($query,[$userName]);
+//    return $result;
+//  }
+
+//function addUser($conn,string $userName, string $userMail) {
+//    $query = "INSERT INTO `user` (`id`, `name`, `email`, `createDate`) VALUES (NULL, '$userName', '$userMail', NOW());";
+//    $result = $conn->execute_query($query);
+//    return $result;
+//}

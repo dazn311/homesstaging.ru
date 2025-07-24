@@ -8,12 +8,13 @@ $connections[] = require 'mysql_connection.php';
 
 $email = 'daz@gmail.com';
 $password = '12345';
+//$createDate = date('Y-m-d H:i:s');
 
 foreach ($connections as $connection) {
-    $sth = $connection->prepare('INSERT INTO users (email, password) values (:email, :password)');
+    $sth = $connection->prepare('INSERT INTO users (email, password,createDate) values (:email, :password, NOW())');
     $sth->execute([
         'email' => $email,
         'password' => password_hash($password, PASSWORD_DEFAULT)
     ]);
-    var_dump($connection->lastInsertId());
+//    var_dump($connection->lastInsertId());
 }
