@@ -29,10 +29,10 @@ services:
     networks:
       - app_network
   php:
-    image: php:8.2-fpm
-#    build:
-#      context: ./
-#      dockerfile: ./php/Dockerfile
+#    image: php:8.2-fpm
+    build:
+      context: ./
+      dockerfile: ./php/Dockerfile
     tty: true
     working_dir: /var/www/html/homes_staging
     container_name: php-hst

@@ -14,6 +14,9 @@ switch (true) {
     case $request == '/page':
         echo "[15]router: new page";
         break;
+    case preg_match("/^\/user/", $request ):
+        require "$root_path2/pages/user.php";
+        break;
     case str_starts_with($request, "/pages/mitinskii-les"):
         require "$root_path2/pages/mitinskii-les.php";
         break;
