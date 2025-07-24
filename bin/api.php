@@ -42,13 +42,13 @@
   }
 
   function getUsers($conn, $limit) {
-    $query = "SELECT password, email FROM users LIMIT $limit";
+    $query = "SELECT email, password FROM users LIMIT $limit";
     $result = $conn->query($query);
   return $result->fetchAll();
   }
 
   function getUsersPDO($dbh, $limit) {
-    $query = "SELECT name, email FROM users LIMIT $limit";
+    $query = "SELECT email, name FROM users LIMIT $limit";
     $sth = $dbh->prepare($query);
     $sth->execute();
     $featureIssues = $sth->fetchAll();
