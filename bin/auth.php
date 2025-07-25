@@ -5,28 +5,27 @@ function debug($data = []): void
     echo '<pre>' . print_r($data, 1) . '</pre>';
 }
 
-function register(array $data = []): bool
+function register($pdo,array $data = []): bool
 {
-    global $db;
-    $stmt = $db->prepare("select count(*) from users where email = ?");
+    $stmt = $pdo->prepare("SELECT count(*) FROM users WHERE email = ?");
     $stmt->execute([$data['email']]);
     if ($stmt->fetchColumn()) {
         $_SESSION['error'] = 'Email already exists';
         return false;
     }
-
     $password = password_hash($data['password'], PASSWORD_DEFAULT);
-    $stmt = $db->prepare("insert into users (name, email, password) values (?, ?, ?)");
+    $stmt = $pdo->prepare("insert into users (name, email, password) values (?, ?, ?)");
     $stmt->execute([$data['name'], $data['email'], $password]);
     $_SESSION['success'] = 'User created';
     return true;
 }
 
-function login($data): bool
+function login($pdo,$data): bool
 {
-    global $dbh;
-    $stmt = $dbh->prepare("select * from users where email = ?");
+//    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
     $stmt->execute([$data['email']]);
+
     if (!$user = $stmt->fetch()) {
         $_SESSION['error'] = 'Wrong email or password';
         return false;
@@ -40,7 +39,7 @@ function login($data): bool
 
     if (!empty($data['remember_me'])) {
         $remember = md5(uniqid(rand(), true) . $user['id'] . microtime(true));
-        $stmt = $dbh->prepare("update users set remember_me = ? where id = ?");
+        $stmt = $pdo->prepare("update users set remember_me = ? WHERE id = ?");
         $stmt->execute([$remember, $user['id']]);
         setcookie('remember_me', $remember, time() + 3600 * 24 * 30, '/');
     }
@@ -48,14 +47,13 @@ function login($data): bool
     return true;
 }
 
-function check_auth(): bool
+function check_auth($pdo): bool
 {
-    global $dbh;
     if (isset($_SESSION['user'])) {
         return true;
     } elseif (isset($_COOKIE['remember_me'])) {
         $remember_me = $_COOKIE['remember_me'];
-        $stmt = $dbh->prepare("select id from users where remember_me = ?");
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE remember_me = ?");
         $stmt->execute([$remember_me]);
         if ($user_id = $stmt->fetchColumn()) {
             $_SESSION['user'] = $user_id;
@@ -65,14 +63,12 @@ function check_auth(): bool
     return false;
 }
 
-function get_user()
+function get_user($pdo)
 {
-    global $db;
-    if (!check_auth()) {
+    if (!check_auth($pdo)) {
         return null;
     }
-    $stmt = $db->prepare("select id, name, email from users where id = ?");
+    $stmt = $pdo->prepare("select id, name, email FROM users WHERE id = ?");
     $stmt->execute([$_SESSION['user']]);
     return $stmt->fetch();
 }
-

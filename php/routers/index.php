@@ -10,7 +10,7 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $root_path = dirname(__DIR__);
 $root_path2 = dirname($_SERVER['DOCUMENT_ROOT']);
 $root_doc = $_SERVER['DOCUMENT_ROOT'];
-
+//var_dump($path);
 $router = new Router();
 
 $router->add("/", function() {
@@ -32,11 +32,32 @@ $router->add("/php", function() {
     require "$root_path2/php/index.php";
 });
 
+$router->add("/dashboard", function() {
+    global $root_path2;
+    require "$root_path2/pages/dashboard.php";
+});
+
+$router->add("/login", function() {
+    global $root_path2;
+    require "$root_path2/pages/login.php";
+});
+
+$router->add("/logout", function() {
+    global $root_path2;
+    require "$root_path2/pages/logout.php";
+});
+
+$router->add("/register", function() {
+    global $root_path2;
+    require "$root_path2/pages/register.php";
+});
+
 $router->add("/pages/mitinskii-les", function() {
     global $root_path2;
     require "$root_path2/pages/mitinskii-les.php";
 });
-//var_dump($router);
+
+//var_dump($path);
 //echo '$root_path2: ' . $root_path2;
 //echo '<div>'. '$path: ' . $path . '</div>';
 $router->dispatch($path);

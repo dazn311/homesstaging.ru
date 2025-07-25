@@ -27,6 +27,27 @@ https://selectel.ru/blog/docker-compose/
 install;
 composer require predis/predis
 composer require vlucas/phpdotenv
+===
+docker images
+docker container ls
+$ docker-compose exec [service name] [command]
+docker-compose exec mysql-hst ls
+ocker-compose logs nginx
+
+docker exec -it e3f51d3d6e30 /bin/bash
+bash-5.1# mysql -p12345
+mysql> show databases;
+mysql> use example
+mysql> show tables;
+mysql> select * from users;
++----+--------------------------+-------+----------+---------------------+-------------+------+
+| id | email                    | name  | password | createDate          | remember_me | role |
++----+--------------------------+-------+----------+---------------------+-------------+------+
+|  1 | registration55@gmail.com | Sasha | 12345    | 2025-07-25 20:43:10 | 1           |    0 |
+|  2 | daz@gmail.com            | Alex  | 12345    | 2025-07-25 20:43:10 | 1           |    1 |
++----+--------------------------+-------+----------+---------------------+-------------+------+
+2 rows in set (0.00 sec)
+
 
 
 # [PHP PDO и работа с базой данных](https://www.youtube.com/playlist?list=PL7Nh93imVuXw_wvYPFsbb33f_ZiXkyLO3)
