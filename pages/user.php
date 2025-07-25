@@ -1,6 +1,6 @@
 <?php
 //session_start();
-require_once "../bin/connectPDO.php";
+$dbh = require_once "../bin/connectPDO.php";
 require_once "../bin/api.php";
 //require "../Lib/Utils/printLine.php";
 
@@ -17,7 +17,7 @@ echo printLine("[12user] name: $user- limit: $limit");
 //echo Utils\GetLink::get('auth-page');
 
 //get data;
-// $result = addUserPDO($conn,"userName",'userMail');
+// $result = addUserPDO($dbh,"userName",'userMail');
 // $result = addUserPDO($dbh,"userName2",'userMail2');
  $result = getUsersPDO($dbh,$limit);
 
@@ -55,7 +55,7 @@ echo printLine("[12user] name: $user- limit: $limit");
 
 if ($result) {
     foreach ($result as $row) {
-        echo '<li>' . $row["email"] . ' (' . $row["password"] . ')' . $row["createDate"] . '</li>';
+        echo '<li>' . $row["email"] . ' (' . $row["name"] . ')' . $row["createDate"] . '</li>';
     }
 }
 

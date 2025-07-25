@@ -3,17 +3,13 @@
 declare(strict_types=1);
 
 /** @var PDO[] $connections */
-$connections[] = require 'mysql_connection.php';
-//$connections[] = require 'pgsql_connection.php';
-$connections[] = require 'sqlite_connection.php';
+$pdo = require 'mysql_connection.php';
 
 $users = generateUsers(10);
 
-foreach ($connections as $pdo) {
-    $sth = $pdo->prepare('INSERT INTO users (email, password) values (:email, :password)');
-    foreach ($users as $user) {
-        $sth->execute($user);
-    }
+$sth = $pdo->prepare('INSERT INTO users (email, name, password, remember_me, role) values (:email, :name, :password, :remember_me, :role)');
+foreach ($users as $user) {
+    $sth->execute($user);
 }
 
 function generateUsers(int $count): array
@@ -22,7 +18,10 @@ function generateUsers(int $count): array
     for($i = 0; $i < $count; $i++) {
         $result[] = [
             'email' => "daz{$i}@gmail.com",
-            'password' => password_hash('12345', PASSWORD_DEFAULT)
+            'name' => "daz{$i}",
+            'password' => password_hash('12345', PASSWORD_DEFAULT),
+            'remember_me' => false,
+            'role' => 0
         ];
     }
     return $result;

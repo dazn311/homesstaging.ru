@@ -11,5 +11,5 @@ $options = [
 
 //$options = [];
 
-$dsn = "mysql:host=mysql;dbname=example;port:3309;charset=utf8";
+$dsn = "mysql:host=mysql;dbname=example;port:3309;charset=utf8mb4";
 return new PDO($dsn, 'root', '12345', $options);
