@@ -1,6 +1,4 @@
-#FROM php8.1-pdo-mysql
 FROM php:8.2-fpm
-#FROM php:8.2-cli
 
 WORKDIR /var/www/html/homes_staging
 
@@ -21,16 +19,7 @@ RUN apt-get -y update \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
-#RUN php /var/www/html/homes_staging/bin/mysql_create.php
-#RUN php /bin/registration.php
 
-#CMD [ "php", "/var/www/html/homes_staging/bin/mysql_create.php" ]
-#CMD [ "php", "/var/www/html/homes_staging/bin/registration.php" ]
-#CMD ["php", "-S", "0.0.0.0:80", "-t", "/bin", "/bin/mysql_create.php"]
-#good;
-#ENTRYPOINT ["/bin/bash", "-c", "php /var/www/html/homes_staging/bin/mysql_create.php"]
-#ENTRYPOINT ["/bin/bash", "-c", "php /var/www/html/homes_staging/bin/registration.php"]
-#ENTRYPOINT ["/bin/bash", "-c", "php ./bin/registration.php"]
 
 
 

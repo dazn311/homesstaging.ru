@@ -8,8 +8,8 @@ services:
     environment:
       MYSQL_DATABASE: example
       MYSQL_ROOT_PASSWORD: 12345
-#    volumes:
-#      - ./dump:/docker-entrypoint-initdb.d
+    volumes:
+      - ./dump:/docker-entrypoint-initdb.d
     networks:
       - app_network
   nginx:
@@ -40,6 +40,10 @@ services:
       PHP_IDE_CONFIG: serverName=homesstaging.ru
     volumes:
       - ./:/var/www/html/homes_staging
+#    command:
+#      - php /bin/test_run.php
+#      - php /var/www/html/homes_staging/bin/test_run.php
+#      - php /bin/registration.php
     depends_on:
       - mysql
     networks:
