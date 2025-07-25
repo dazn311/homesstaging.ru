@@ -1,4 +1,4 @@
-CREATE DATABASE example;
+# CREATE DATABASE example;
 CREATE TABLE users (
                        id int(11) primary key auto_increment,
                        email varchar(45),

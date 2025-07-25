@@ -10,7 +10,7 @@ $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
 
 $link = new Utils\GetLink;
-echo printLine("[12user] name: $user- limit: $limit");
+//echo printLine("[12user] name: $user- limit: $limit");
 //var_dump($link->linkAlias);
 //phpinfo();
 //echo get_called_class(Utils\GetLink::get('33'));

@@ -10,7 +10,7 @@ $password = '12345';
 $remember_me = '1';
 $createDate = date('Y-m-d H:i:s');
 
-$query = "INSERT INTO `users` ( `email`, `name`, `password`,`remember_me`, `role`, `createDate`) VALUES (:email, :name, :password,:remember_me, :role , NOW());";
+$query = "INSERT INTO users (`id`, `email`, `name`, `password`,`remember_me`, `role`, `createDate`) VALUES (null, :email, :name, :password,:remember_me, :role , :createDate);";
 $sth = $connection->prepare($query);
 $sth->execute([
     'email' => $email,
@@ -18,6 +18,6 @@ $sth->execute([
     'password' => password_hash($password, PASSWORD_DEFAULT),
     'remember_me' => $remember_me,
     'role' => 0,
-    'createDate' => $createDate,
+    'createDate' => $createDate
 ]);
 //var_dump($connection->lastInsertId());

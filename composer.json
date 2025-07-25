@@ -1,7 +1,8 @@
 {
     "autoload": {
         "psr-4": {
-            "Utils\\": "Lib/Utils/"
+            "Utils\\": "Lib/Utils/",
+            "php\\routers\\": "php/routers/"
         }
     },
     "require": {

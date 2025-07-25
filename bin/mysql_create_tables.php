@@ -11,6 +11,6 @@ $mysql->exec("create table if not exists users (
                     password varchar(255),
                     createDate timestamp,
                     remember_me varchar(255),
-                    role int default '0',
+                    role int default 0
                 )"
 );
