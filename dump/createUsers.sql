@@ -8,11 +8,21 @@ CREATE TABLE users (
                        role int default 0
 );
 
-INSERT INTO users (`id`, `email`, `name`, `password`,`createDate`,`remember_me`, `role`) VALUES (
-                                                                                                 null,
-                                                                                                 'registration55@gmail.com',
-                                                                                                 'Sasha',
-                                                                                                 '12345',
-                                                                                                 NOW(),
-                                                                                                 '1' ,
-                                                                                                 0);
+INSERT INTO
+    users (`id`, `email`, `name`, `password`,`createDate`,`remember_me`, `role`)
+VALUES (
+     null,
+     'registration55@gmail.com',
+     'Sasha',
+     '12345',
+     NOW(),
+     '1' ,
+     0),
+       (
+       null,
+       'daz@gmail.com',
+       'Alex',
+       '12345',
+       NOW(),
+       '1' ,
+       1);
