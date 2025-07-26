@@ -1,3 +1,8 @@
+<?php
+global $path;
+global $pdo;
+$is_authenticated = check_auth($pdo);
+?>
 <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/user">Logo</a>
@@ -17,13 +22,18 @@
                     </li>
                     <?php
                     global $pdo;
-                    if (!check_auth($pdo)): ?>
+                    if (!$is_authenticated): ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="login">Login</a>
+                            <?php
+                                if ($path == '/register') {
+                                    echo '<a class="nav-link" href="/login">Login</a>';
+                                } else {
+                                    echo '<a class="nav-link" href="/register">Register</a>';
+                                }
+                            ?>
+
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register">Register</a>
-                        </li>
+
                     <?php else: ?>
                         <li class="nav-item">
                             <a class="nav-link" href="dashboard">Dashboard</a>

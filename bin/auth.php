@@ -7,6 +7,7 @@ function debug($data = []): void
 
 function register($pdo,array $data = []): bool
 {
+//    global $pdo;
     $stmt = $pdo->prepare("SELECT count(*) FROM users WHERE email = ?");
     $stmt->execute([$data['email']]);
     if ($stmt->fetchColumn()) {

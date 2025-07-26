@@ -10,14 +10,8 @@ if (check_auth($pdo)) {
 }
 if ($_POST) {
     $data = $_POST;
-    if (isset($data['name'])) {
-        register($data);
-    } else {
-        if (login($pdo,$data)) {
-            header("Location: dashboard");
-            die;
-        }
-        header("Location: login");
+    if (login($pdo,$data)) {
+        header("Location: dashboard");
         die;
     }
 }

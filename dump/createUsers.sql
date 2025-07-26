@@ -25,4 +25,12 @@ VALUES (
        '12345',
        NOW(),
        '1' ,
+       1),
+       (
+       null,
+       'alex2505@bk.ru',
+       'Alex',
+       '$2y$10$mKa0eFlj229qrIRURXznj.m6fjQC5w.HZu.HRjmB5Q5m/t1xDWLhK',
+       NOW(),
+       '1' ,
        1);

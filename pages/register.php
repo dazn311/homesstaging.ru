@@ -14,13 +14,6 @@ if ($_POST) {
     $data = $_POST;
     if (isset($data['name'])) {
         register($pdo, $data);
-    } else {
-        if (login($pdo,$data)) {
-            header("Location: dashboard");
-            die;
-        }
-        header("Location: login");
-        die;
     }
 }
 
