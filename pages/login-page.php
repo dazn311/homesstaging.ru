@@ -2,6 +2,7 @@
 
 session_start();
 require '../bin/auth.php';
+require '../bin/helpers.php';
 $pdo = require_once '../bin/connectPDO.php';
 //$pdo = require '../bin/mysql_connection.php';
 //echo PHP_EOL;

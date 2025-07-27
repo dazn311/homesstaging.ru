@@ -23,7 +23,7 @@ $router->add("/page", function() {
 
 $router->add("/user", function() {
     global $root_path2;
-    require "$root_path2/pages/user.php";
+    require "$root_path2/pages/user-page.php";
 });
 
 $router->add("/php", function() {
@@ -33,22 +33,22 @@ $router->add("/php", function() {
 
 $router->add("/dashboard", function() {
     global $root_path2;
-    require "$root_path2/pages/dashboard.php";
+    require __DIR__ ."/../../pages/dashboard.php";
 });
 
 $router->add("/login", function() {
     global $root_path2;
-    require "$root_path2/pages/login.php";
+    require "$root_path2/pages/login-page.php";
 });
 
 $router->add("/logout", function() {
     global $root_path2;
-    require "$root_path2/pages/logout.php";
+    require "$root_path2/pages/logout-page.php";
 });
 
 $router->add("/register", function() {
     global $root_path2;
-    require "$root_path2/pages/register.php";
+    require "$root_path2/pages/register-page.php";
 });
 
 $router->add("/pages/mitinskii-les", function() {

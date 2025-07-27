@@ -1,20 +1,19 @@
 <?php
 
 session_start();
-//require '../bin/mysql_connection.php';
 require '../bin/auth.php';
+require '../bin/helpers.php';
 $pdo = require '../bin/connectPDO.php';
 
-if (check_auth($pdo)) {
-    header("Location: dashboard");
-    die;
-}
-
-if ($_POST) {
-    $data = $_POST;
-    if (isset($data['name'])) {
-        register($pdo, $data);
+if (isset($_GET['do']) && $_GET['do'] == 'logout') {
+    if (check_auth($pdo)) {
+        unset($_SESSION['user']);
     }
+    if (isset($_COOKIE['remember_me'])) {
+        setcookie('remember_me', '', time() - 3600, '/');
+    }
+    header("Location: login");
+    die;
 }
 
 ?>
@@ -23,8 +22,10 @@ if ($_POST) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register</title>
+    <title>Logout</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+<!--    <link href="../public_html/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 </head>
 <body>
 
@@ -51,41 +52,29 @@ if ($_POST) {
     <?php endif; ?>
 
     <div class="row">
-
         <div class="col-md-6">
-            <h2>Register</h2>
+            <h2>Login</h2>
 
             <form action="" method="post">
 
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-                </div>
-
-                <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
-                <div class="mb-3">
-                    <label for="avatar">Изображение профиля
-                        <input
-                                type="file"
-                                id="avatar"
-                                name="avatar"
-                            <?php echo validationErrorAttr('avatar'); ?>
-                        >
-                        <?php if(hasValidationError('avatar')): ?>
-                            <small><?php echo validationErrorMessage('avatar'); ?></small>
-                        <?php endif; ?>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember_me" id="remember_me">
+                    <label class="form-check-label" for="remember_me">
+                        Remember me
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-warning">Register</button>
+                <button type="submit" class="btn btn-warning">Login</button>
 
             </form>
         </div>
