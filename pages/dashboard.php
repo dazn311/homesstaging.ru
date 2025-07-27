@@ -3,9 +3,7 @@
 session_start();
 require '../bin/auth.php';
 $root_path = dirname($_SERVER['DOCUMENT_ROOT']);
-
-//require '../bin/mysql_connection.php';
-$pdo = require '../bin/mysql_connection.php';
+$pdo = require '../bin/connectPDO.php';
 
 if (!check_auth($pdo)) {
     header("Location: login");
@@ -23,7 +21,6 @@ $user = get_user($pdo);
     <title>Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-<!--    <link href="../public_html/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
 </head>
 <body>
 

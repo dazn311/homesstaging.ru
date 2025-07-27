@@ -10,7 +10,6 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $root_path = dirname(__DIR__);
 $root_path2 = dirname($_SERVER['DOCUMENT_ROOT']);
 $root_doc = $_SERVER['DOCUMENT_ROOT'];
-//var_dump($path);
 $router = new Router();
 
 $router->add("/", function() {

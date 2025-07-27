@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 /** @var PDO[] $connections */
-$connection = require 'mysql_connection.php';
+$connection = require '../connectPDO.php';
 
 $email = 'registration55@gmail.com';
 $name = 'Sasha';

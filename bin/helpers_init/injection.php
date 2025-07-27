@@ -8,7 +8,7 @@ $password = 'example';
 //$example_hash = password_hash($password, PASSWORD_DEFAULT);
 //$email = "something' union select id, email, '{$example_hash}' as 'password' from users where id = 5 #";
 
-$pdo = require 'mysql_connection.php';
+$pdo = require 'connectPDO.php';
 
 $while = ['id', 'email'];
 

@@ -2,17 +2,23 @@
 
 session_start();
 require '../bin/auth.php';
-$pdo = require '../bin/mysql_connection.php';
+$pdo = require_once '../bin/connectPDO.php';
+//$pdo = require '../bin/mysql_connection.php';
+//echo PHP_EOL;
+//echo "path: ";
+//var_dump($pdo);
+//echo PHP_EOL;
+//var_dump($_POST);
 
 if (check_auth($pdo)) {
-    header("Location: dashboard");
-    die;
+    redirect('/dashboard');
 }
+
 if ($_POST) {
     $data = $_POST;
+
     if (login($pdo,$data)) {
-        header("Location: dashboard");
-        die;
+        redirect('/dashboard');
     }
 }
 
@@ -33,7 +39,7 @@ if ($_POST) {
 
 <div class="container my-3">
 
-    <?php if (isset($_SESSION['success'])): ?>
+    <?php if (isset($_SESSION) & isset($_SESSION['success'])): ?>
         <div class="alert alert-success" role="alert">
             <?php
             echo $_SESSION['success'];
@@ -42,7 +48,7 @@ if ($_POST) {
         </div>
     <?php endif; ?>
 
-    <?php if (isset($_SESSION['error'])): ?>
+    <?php if (isset($_SESSION) & isset($_SESSION['error'])): ?>
         <div class="alert alert-danger" role="alert">
             <?php
             echo $_SESSION['error'];
@@ -55,15 +61,15 @@ if ($_POST) {
         <div class="col-md-6">
             <h2>Login</h2>
 
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required >
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required >
                 </div>
 
                 <div class="form-check mb-3">

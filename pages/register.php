@@ -1,9 +1,9 @@
 <?php
 
 session_start();
-require '../bin/mysql_connection.php';
+//require '../bin/mysql_connection.php';
 require '../bin/auth.php';
-$pdo = require '../bin/mysql_connection.php';
+$pdo = require '../bin/connectPDO.php';
 
 if (check_auth($pdo)) {
     header("Location: dashboard");
@@ -59,17 +59,30 @@ if ($_POST) {
 
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="avatar">Изображение профиля
+                        <input
+                                type="file"
+                                id="avatar"
+                                name="avatar"
+                            <?php echo validationErrorAttr('avatar'); ?>
+                        >
+                        <?php if(hasValidationError('avatar')): ?>
+                            <small><?php echo validationErrorMessage('avatar'); ?></small>
+                        <?php endif; ?>
+                    </label>
                 </div>
 
                 <button type="submit" class="btn btn-warning">Register</button>

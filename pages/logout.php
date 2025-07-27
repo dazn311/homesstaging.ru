@@ -2,7 +2,7 @@
 
 session_start();
 require '../bin/auth.php';
-$pdo = require '../bin/mysql_connection.php';
+$pdo = require '../bin/connectPDO.php';
 
 if (isset($_GET['do']) && $_GET['do'] == 'logout') {
     if (check_auth($pdo)) {
