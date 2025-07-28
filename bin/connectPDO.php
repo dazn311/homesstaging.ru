@@ -1,18 +1,33 @@
 <?php
-declare(strict_types=1);
-  $options = [
+
+$options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_STRINGIFY_FETCHES => false,
     PDO::ATTR_EMULATE_PREPARES => false
-  ];
-  // print_r(PDO::getAvailableDrivers());
-  // Array ( [0] => dblib [1] => mysql [2] => odbc [3] => pgsql [4] => sqlite )
+];
+$DBH_ARRAY = array (
+    "host" => $_ENV['DB_HOST'],
+    "dbname" => $_ENV['DB_DATABASE'],
+    "port" => $_ENV['DB_PORT']
+);
+$userName = $_ENV['DB_USERNAME'];
+$userPassword = $_ENV['DB_PASSWORD'];
+
+$dbhStr = create_dbh($DBH_ARRAY);
+
 try {
-    $dsn = "mysql:host=mysql;dbname=example;port:3309;charset=utf8mb4";
-    $dbh = new PDO($dsn, 'root', '12345',$options);
+    $dbh = new PDO($dbhStr, $userName, $userPassword,$options);
     return $dbh;
 } catch (PDOException $e) {
     die($e->getMessage());
 }
 
-//    $dsn2 = "mysql:host=mysql-hst;dbname=example;port=3306";
+function create_dbh(array $array): string
+{
+    $res = [];
+    foreach ($array as $key => $value) {
+        $res[] = $key . '=' . $value;
+    }
+
+    return "mysql:" . implode(';', $res);
+}
