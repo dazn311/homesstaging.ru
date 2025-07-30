@@ -5,17 +5,10 @@ require_once "../bin/api.php";
 require '../bin/auth.php';
 require '../bin/helpers.php';
 
+use Utils\GetLink;
 $user = trim($_GET["name"] ?? '');
 $limit = trim($_GET["limit"] ?? '15');
 $user = filter_var($user, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-
-$link = new Utils\GetLink;
-//echo printLine("[12user] name: $user- limit: $limit");
-//var_dump($link->linkAlias);
-//phpinfo();
-//echo get_called_class(Utils\GetLink::get('33'));
-//echo Utils\GetLink::get('auth-page');
 
 //get data;
 // $result = addUserPDO($dbh,"userName",'userMail');
@@ -64,7 +57,7 @@ $user = get_user($dbh);
 <body>
 <?php
 require '../template/navbar.php';
-
+// echo GetLink::get('auth-page');
 if ($result) {
     foreach ($result as $row) {
         echo '<li>' . $row["email"] . ' (' . $row["name"] . ')' . $row["createDate"] . '</li>';

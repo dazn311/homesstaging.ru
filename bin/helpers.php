@@ -6,7 +6,7 @@ use JetBrains\PhpStorm\NoReturn;
 
 require_once __DIR__ . '/config.php';
 
-#[NoReturn]
+
 function redirect(string $path): void
 {
     header("Location: $path");
@@ -116,7 +116,6 @@ function currentUser(): array|false
     return $stmt->fetch(\PDO::FETCH_ASSOC);
 }
 
-#[NoReturn]
 function logout(): void
 {
     unset($_SESSION['user']['id']);

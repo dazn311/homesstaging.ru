@@ -24,6 +24,10 @@ docker-compose exec php php /var/www/html/homes_staging/bin/registration.php
 ========================
 https://selectel.ru/blog/docker-compose/
 ==========================
+docker pull composer/composer
+docker run --rm -it -v "$(pwd):/app" composer/composer install
+docker run --rm -it -v $(pwd) composer/composer install
+
 install;
 composer require predis/predis
 composer require vlucas/phpdotenv
